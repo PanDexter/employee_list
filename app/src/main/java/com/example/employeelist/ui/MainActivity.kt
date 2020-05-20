@@ -1,7 +1,8 @@
-package com.example.employeelist
+package com.example.employeelist.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.employeelist.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -10,8 +10,7 @@ data class EmployeeEntity(
     val firstName: String,
     val lastName: String,
     val age: Int,
-    val gender: Gender,
-    val addresses: List<String>
+    val gender: Gender
 )
 
 enum class Gender {
