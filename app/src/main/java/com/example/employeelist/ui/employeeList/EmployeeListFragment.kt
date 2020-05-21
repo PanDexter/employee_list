@@ -1,7 +1,7 @@
 package com.example.employeelist.ui.employeeList
 
-import dagger.android.support.DaggerFragment
+import dagger.android.DaggerActivity
 
-class EmployeeListFragment : DaggerFragment() {
+class EmployeeListActivity : DaggerActivity() {
 
 }
