@@ -34,6 +34,11 @@ class AddressAdapter @Inject constructor() : RecyclerView.Adapter<AddressViewHol
         notifyDataSetChanged()
     }
 
+    fun addDataWithDiff(address: Address) {
+        this.items += address
+        notifyDataSetChanged()
+    }
+
 
 }
 

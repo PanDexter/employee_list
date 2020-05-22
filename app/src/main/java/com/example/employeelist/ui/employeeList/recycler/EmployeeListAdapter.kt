@@ -14,13 +14,16 @@ class EmployeeListAdapter @Inject constructor() :
 
     var items: List<Employee> = emptyList()
     private val selectedItemSubject: PublishSubject<Int> = PublishSubject.create()
+    private val deletedItemSubject: PublishSubject<Int> = PublishSubject.create()
     val selectedItemStream: Observable<Int> = selectedItemSubject
+    val deletedItemStream: Observable<Int> = deletedItemSubject
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemEmployeeBinding.inflate(inflater, parent, false)
         return EmployeeListViewHolder(
             binding = binding,
-            onItemClick = selectedItemSubject
+            onItemClick = selectedItemSubject,
+            onDeleteClick = deletedItemSubject
         )
     }
 
@@ -39,14 +42,18 @@ class EmployeeListAdapter @Inject constructor() :
 
 class EmployeeListViewHolder(
     private val binding: ItemEmployeeBinding,
-    private val onItemClick: PublishSubject<Int>
+    private val onItemClick: PublishSubject<Int>,
+    private val onDeleteClick: PublishSubject<Int>
 ) : RecyclerView.ViewHolder(binding.root) {
 
     lateinit var item: Employee
 
     init {
-        itemView.setOnClickListener {
+        binding.root.setOnClickListener {
             onItemClick.onNext(adapterPosition)
+        }
+        binding.btnRemove.setOnClickListener {
+            onDeleteClick.onNext(adapterPosition)
         }
     }
 

@@ -1,7 +1,7 @@
 package com.example.employeelist.di
 
-import com.example.employeelist.ui.MainActivity
-import com.example.employeelist.ui.employee.EmployeeFragment
+import com.example.employeelist.ui.employee.EmployeeActivity
+import com.example.employeelist.ui.employeeList.EmployeeListActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -9,10 +9,10 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityModule {
 
     @ActivityScope
-    @ContributesAndroidInjector()
-    abstract fun bindMainActivity(): MainActivity
+    @ContributesAndroidInjector
+    abstract fun bindEmployeeListActivity(): EmployeeListActivity
 
     @ActivityScope
-    @ContributesAndroidInjector
-    abstract fun bindShoppingListFragment(): EmployeeFragment
+    @ContributesAndroidInjector(modules = [EmployeeActivityModule::class])
+    abstract fun bindEmployeeActivity(): EmployeeActivity
 }
